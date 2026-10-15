@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f1f0e7">
+    <meta name="description" content="A read-only Wanderlog travel journal profile.">
+    <title>Wanderlog — Public Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Space+Mono&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="profile-page">
+    <a class="skip-link" href="#profileContent">Skip to content</a>
+    <header class="site-header">
+        <a href="index.html#home" class="logo" aria-label="Wanderlog home">Wanderlog</a>
+        <nav class="nav profile-nav">
+            <a href="index.html#destinations">My journal</a>
+            <a href="index.html#profile">Profile settings</a>
+        </nav>
+    </header>
+
+    <main class="public-profile" id="profileContent" aria-live="polite">
+        <div class="profile-loading" id="profileLoading">
+            <div class="loading-mark">✦</div>
+            <p>Loading travel journal…</p>
+        </div>
+
+        <section class="profile-shell hidden" id="profileShell">
+            <div class="profile-intro">
+                <p class="eyebrow">PUBLIC TRAVEL JOURNAL</p>
+                <div class="profile-avatar" id="profileAvatar">WL</div>
+                <h1 id="profileName">Traveler</h1>
+                <p class="profile-bio" id="profileBio"></p>
+                <div class="profile-meta" id="profileMeta"></div>
+            </div>
+
+            <section class="profile-trips-section">
+                <div class="section-heading destinations-heading">
+                    <div>
+                        <p class="eyebrow">JOURNEY LOG</p>
+                        <h2>Trips worth remembering</h2>
+                    </div>
+                    <span class="trip-count" id="profileTripCount"></span>
+                </div>
+
+                <div class="destination-grid profile-trip-grid" id="profileTripGrid"></div>
+
+                <div class="empty-state hidden" id="profileEmptyState">
+                    <div class="empty-icon">✦</div>
+                    <h3>No trips yet</h3>
+                    <p>This traveler has not added any journal entries yet.</p>
+                </div>
+            </section>
+        </section>
+
+        <section class="profile-not-found hidden" id="profileNotFound">
+            <div class="empty-icon">✦</div>
+            <p class="eyebrow">PROFILE NOT FOUND</p>
+            <h1>That travel journal is not available.</h1>
+            <p>Check the profile link or return to Wanderlog and create your own public journal.</p>
+            <a class="cta-button" href="index.html#profile">Back to Wanderlog <span>→</span></a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="year"></span> Wanderlog</p>
+        <p>Read-only public journal.</p>
+    </footer>
+
+    <script src="profile.js"></script>
+</body>
+</html>

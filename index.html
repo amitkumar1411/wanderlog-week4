@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f1f0e7">
+    <meta name="description" content="Wanderlog is a thoughtful travel journal to save trips, photos, destinations and memories.">
+    <title>Wanderlog — Your Travel Journal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Space+Mono&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+        <a href="#home" class="logo" aria-label="Wanderlog home">Wanderlog</a>
+
+        <button class="menu-button" id="menuButton" aria-label="Toggle navigation" aria-controls="mainNav" aria-expanded="false">
+            ☰
+        </button>
+
+        <nav class="nav" id="mainNav">
+            <a href="#home">Home</a>
+            <a href="#add-trip">Add Trip</a>
+            <a href="#destinations">Destinations</a>
+            <a href="#profile">Profile</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="eyebrow">TRAVEL JOURNAL · EXPLORE MORE</p>
+
+                <h1>Stories from<br><span>everywhere.</span></h1>
+
+                <p class="hero-text">
+                    A little collection of places, people, food and moments
+                    that made the journey worth remembering.
+                </p>
+
+                <a href="#add-trip" class="cta-button">Add a trip <span>→</span></a>
+            </div>
+
+            <div class="hero-card" aria-label="Featured travel destination">
+                <div class="card-image" role="img" aria-label="Illustration of a sun setting over layered green mountains and water">
+                    <div class="sun"></div>
+                    <div class="mountain mountain-one"></div>
+                    <div class="mountain mountain-two"></div>
+                    <div class="water"></div>
+                </div>
+                <div class="card-details">
+                    <span class="card-label">FEATURED JOURNEY</span>
+                    <h2>Along the coast</h2>
+                    <p>Quiet mornings, salty air and roads with no plans.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="trip-section" id="add-trip">
+            <div class="section-heading">
+                <p class="eyebrow">YOUR JOURNAL</p>
+                <h2 id="formHeading">Add a new trip</h2>
+            </div>
+
+            <form class="trip-form" id="tripForm" novalidate aria-describedby="formStatus">
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="title">Trip title <span>*</span></label>
+                        <input type="text" id="title" name="title" placeholder="e.g. A weekend in the hills" required maxlength="80">
+                        <small class="field-error" id="titleError"></small>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="destination">Destination <span>*</span></label>
+                        <input type="text" id="destination" name="destination" placeholder="e.g. Manali, India" required maxlength="100">
+                        <small class="field-error" id="destinationError"></small>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="date">Date <span>*</span></label>
+                        <input type="date" id="date" name="date" required>
+                        <small class="field-error" id="dateError"></small>
+                    </div>
+
+                    <div class="form-field form-field-full">
+                        <label for="notes">Notes</label>
+                        <textarea id="notes" name="notes" rows="5" placeholder="What made this trip worth remembering?" maxlength="1000"></textarea>
+                    </div>
+
+                    <div class="form-field form-field-full photo-field">
+                        <label for="photo">Cover photo</label>
+                        <input type="file" id="photo" name="photo" accept="image/*">
+                        <small class="photo-help" id="photoHelp">JPG, PNG, WEBP · up to 4 MB</small>
+                        <small class="field-error" id="photoError"></small>
+                        <div class="photo-preview" id="photoPreview">
+                            <img id="photoPreviewImage" alt="Selected trip photo preview">
+                        </div>
+                        <div class="photo-placeholder" id="photoPlaceholder">
+                            <span>✦</span>
+                            <p>Select an image to preview it before saving.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-button" id="submitButton">Save trip</button>
+                    <button type="button" class="cancel-button hidden" id="cancelEditButton">Cancel edit</button>
+                    <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+                </div>
+            </form>
+        </section>
+
+        <section class="destinations" id="destinations">
+            <div class="section-heading destinations-heading">
+                <div>
+                    <p class="eyebrow">RECENT NOTES</p>
+                    <h2>Places worth remembering</h2>
+                </div>
+                <span class="trip-count" id="tripCount" aria-live="polite"></span>
+            </div>
+
+            <div class="destination-grid" id="destinationGrid"></div>
+
+            <div class="empty-state hidden" id="emptyState">
+                <div class="empty-icon">✦</div>
+                <h3>No trips yet</h3>
+                <p>Your travel stories will appear here. Add your first trip and start building your journal.</p>
+                <a href="#add-trip" class="secondary-button">Add your first trip</a>
+            </div>
+        </section>
+
+        <section class="profile-settings" id="profile">
+            <div>
+                <p class="eyebrow">YOUR PUBLIC PROFILE</p>
+                <h2>Give your journal a name.</h2>
+                <p class="profile-settings-copy">Set the name and short bio that friends will see on your read-only public profile.</p>
+            </div>
+
+            <form class="profile-form" id="profileForm" aria-describedby="profileStatus">
+                <div class="form-field">
+                    <label for="profileName">Traveler name <span>*</span></label>
+                    <input type="text" id="profileName" maxlength="60" required placeholder="e.g. Harshit Verma">
+                </div>
+                <div class="form-field">
+                    <label for="profileBio">Short bio</label>
+                    <textarea id="profileBio" rows="4" maxlength="220" placeholder="A short line about your travels..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="submit-button">Save profile</button>
+                    <p class="form-status" id="profileStatus" role="status" aria-live="polite"></p>
+                </div>
+                <div class="share-profile">
+                    <span>Public profile link</span>
+                    <a id="profileLink" href="profile.html?user=wanderer" target="_blank" rel="noopener">profile.html?user=wanderer</a>
+                </div>
+            </form>
+        </section>
+
+        <section class="about" id="about">
+            <div>
+                <p class="eyebrow">ABOUT WANDERLOG</p>
+                <h2>Keep the journey,<br>not just the photos.</h2>
+            </div>
+            <p>
+                Wanderlog is a simple travel journal for collecting the small
+                details that usually get forgotten after a trip. Write it down,
+                come back later, and remember how it felt.
+            </p>
+        </section>
+    </main>
+
+    <div class="detail-modal hidden" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailModalTitle">
+        <div class="detail-dialog">
+            <button type="button" class="modal-close" id="closeDetailButton" aria-label="Close trip details">×</button>
+            <div id="detailModalContent"></div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>© <span id="year"></span> Wanderlog</p>
+        <p>Made for curious travellers.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
